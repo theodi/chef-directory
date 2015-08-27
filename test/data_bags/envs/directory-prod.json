@@ -9,6 +9,9 @@
     "capsulecrm" : {
       "account_name" : "theodi",
       "api_token" : "abcdefabcdefabcdefabcdefabcdefab"
+    },
+    "founding_partner": {
+      "id": 0
     }
   }
 }
