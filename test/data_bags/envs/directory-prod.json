@@ -1,0 +1,10 @@
+{
+  "id": "certs-prod",
+  "content" : {
+    "rack_env": "production",
+    "rails_env": "production",
+    "session_secret": {
+      "directory": "8184842351530937c9c8c2e723fd03f4"
+    }
+  }
+}

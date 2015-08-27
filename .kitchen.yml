@@ -5,12 +5,16 @@ driver:
 provisioner:
   name: chef_zero
   data_bags_path: test/data_bags
+  environments_path: test/environments
 
 platforms:
   - name: ubuntu-14.04
 
 suites:
   - name: production
+    provisioner:
+      client_rb:
+        environment: directory-prod
     run_list:
       - recipe[chef_directory::default]
     attributes:
