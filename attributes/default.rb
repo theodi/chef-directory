@@ -1,3 +1,10 @@
+default['user'] = 'directory'
+default['fully_qualified_domain_name'] = 'directory.theodi.org'
+default['catch_and_redirect'] = ['members.theodi.org']
+default['start_port'] = 8000
+default['concurrency'] = 2
+default['repo'] = 'theodi/member-directory'
+
 default['chef_client']['init_style'] = 'none'
 default['chef_client']['cron']['use_cron_d'] = true
 default['chef_client']['cron']['hour'] = '*'
