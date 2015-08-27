@@ -18,3 +18,8 @@ suites:
     run_list:
       - recipe[chef_directory::default]
     attributes:
+      mysql:
+        host: <%= `ipconfig getifaddr en0` %>
+        password: directory
+      deployment:
+        revision: 2492e74456d2a74ea410e11f5c09fcabbcd87914

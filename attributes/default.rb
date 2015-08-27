@@ -5,6 +5,9 @@ default['start_port'] = 8000
 default['concurrency'] = 2
 default['repo'] = 'theodi/member-directory'
 
+default['mysql']['database'] = 'directory'
+default['mysql']['pool'] = 50
+default['migrate'] = 'bundle exec rake db:migrate'
 default['deployment']['rack_env'] = 'production'
 default['deployment']['revision'] = 'CURRENT'
 
