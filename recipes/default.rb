@@ -3,6 +3,7 @@ group = node['user']
 fqdn = node['fully_qualified_domain_name']
 
 include_recipe 'git'
+include_recipe 'nginx'
 include_recipe 'chef-client::config'
 include_recipe 'chef-client::cron'
 include_recipe 'odi-pk'
@@ -67,4 +68,30 @@ deploy_revision "/home/#{user}/#{fqdn}" do
       cwd current_release_directory
     end
   end
+
+  before_restart do
+    current_release_directory = release_path
+    port = node['start_port']
+    concurrency = node['concurrency']
+
+    precompile_assets do
+      cwd current_release_directory
+      user user
+    end
+
+    foremanise user do
+      cwd current_release_directory
+      port port
+      concurrency concurrency
+    end
+
+#    make_vhosts do
+#      cwd current_release_directory
+#      user user
+#      fqdn fqdn
+#    end
+  end
+
+  restart_command "sudo service #{user} restart"
+  notifies :restart, "service[nginx]"
 end

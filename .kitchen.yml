@@ -22,4 +22,4 @@ suites:
         host: <%= `ipconfig getifaddr en0` %>
         password: directory
       deployment:
-        revision: 2492e74456d2a74ea410e11f5c09fcabbcd87914
+        revision: 6fbe4f4fc057ea0ba21520e7967994156e1f7813
