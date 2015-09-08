@@ -2,6 +2,7 @@ user = node['user']
 group = node['user']
 fqdn = node['fully_qualified_domain_name']
 
+include_recipe 'apt'
 include_recipe 'git'
 include_recipe 'nginx'
 include_recipe 'chef-client::config'
@@ -26,7 +27,7 @@ deploy_revision "/home/#{user}/#{fqdn}" do
   migration_command node['migrate']
 #  BORK
 #    * ONLY A SINGLE NODE SHOULD DO DEPLOY TASKS - SOMETHING REDIS QUEUE
-  action :force_deploy
+  action :deploy
   environment(
     'RACK_ENV' => node['deployment']['rack_env']
   )
@@ -58,7 +59,7 @@ deploy_revision "/home/#{user}/#{fqdn}" do
       variables(
         :mysql_host     => node['mysql']['host'],
         :mysql_database => node['mysql']['database'],
-        :mysql_username => node['mysql']['database'],
+        :mysql_username => node['mysql']['user'],
         :mysql_password => node['mysql']['password'],
         :mysql_pool     => node['mysql']['pool']
       )
