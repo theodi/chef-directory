@@ -1,13 +1,4 @@
 name "chef_directory"
-version "0.1.3"
+version "0.1.4"
 
-depends 'git'
-
-depends 'chef-client'
-depends 'ruby-ng'
-depends 'odi-users'
-depends 'envbuilder'
-depends 'odi-pk'
-depends 'odi-monitoring'
-depends 'nginx'
-depends 'apt'
+depends 'skellington'
