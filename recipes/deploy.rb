@@ -5,8 +5,6 @@ deploy_revision "/home/#{node['user']}/#{node['fully_qualified_domain_name']}" d
   revision node['deployment']['revision']
   migrate node.has_key? :migrate
   migration_command node['migrate']
-#  BORK
-#    * ONLY A SINGLE NODE SHOULD DO DEPLOY TASKS - SOMETHING REDIS QUEUE
   action :deploy
   environment(
     'RACK_ENV' => node['deployment']['rack_env']
@@ -57,6 +55,6 @@ deploy_revision "/home/#{node['user']}/#{node['fully_qualified_domain_name']}" d
     end
   end
 
-  restart_command "sudo service #{user} restart"
+  restart_command "sudo service #{node['user']} restart"
   notifies :restart, "service[nginx]"
 end
