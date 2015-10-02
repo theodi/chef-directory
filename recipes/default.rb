@@ -1,13 +1,13 @@
-user = node['user']
-group = node['user']
-fqdn = node['fully_qualified_domain_name']
+#user = node['user']
+#group = node['user']
+#fqdn = node['fully_qualified_domain_name']
 
 include_recipe 'skellington'
 
-deploy_revision "/home/#{user}/#{fqdn}" do
+deploy_revision "/home/#{node['user']}/#{node['fully_qualified_domain_name']}" do
   repo "git://github.com/#{node['repo']}"
-  user user
-  group group
+  user node['user']
+  group node['user']
   revision node['deployment']['revision']
   migrate node.has_key? :migrate
   migration_command node['migrate']
@@ -21,26 +21,31 @@ deploy_revision "/home/#{user}/#{fqdn}" do
   before_migrate do
     current_release_directory = release_path
 
-    bash 'Symlink env' do
-      cwd release_path
-      user user
-      code <<-EOF
-        ln -sf /home/#{user}/env .env
-      EOF
+###    bash 'Symlink env' do
+###      cwd release_path
+###      user user
+###      code <<-EOF
+###        ln -sf /home/#{user}/env .env
+###      EOF
+###    end
+###
+###    directory "/home/#{user}/#{fqdn}/shared/config/" do
+###      action :create
+###      recursive true
+###    end
+###
+###    directory "/home/#{user}/#{fqdn}/shared/log/" do
+###      action :create
+###      recursive true
+###      user user
+###    end
+
+    pre_bundle node['user'] do
+      release_path current_release_directory
+      fully_qualified_domain_name node['fully_qualified_domain_name']
     end
 
-    directory "/home/#{user}/#{fqdn}/shared/config/" do
-      action :create
-      recursive true
-    end
-
-    directory "/home/#{user}/#{fqdn}/shared/log/" do
-      action :create
-      recursive true
-      user user
-    end
-
-    template "/home/#{user}/#{fqdn}/shared/config/database.yml" do
+    template "/home/#{node['user']}/#{node['fully_qualified_domain_name']}/shared/config/database.yml" do
       action :create
       variables(
         :mysql_host     => node['mysql']['host'],
@@ -51,7 +56,7 @@ deploy_revision "/home/#{user}/#{fqdn}" do
       )
     end
 
-    bundlify user do
+    bundlify node['user'] do
       cwd current_release_directory
     end
   end
@@ -63,19 +68,19 @@ deploy_revision "/home/#{user}/#{fqdn}" do
 
     precompile_assets do
       cwd current_release_directory
-      user user
+      user node['user']
     end
 
-    foremanise user do
+    foremanise node['user'] do
       cwd current_release_directory
-      port port
-      concurrency concurrency
+      port node['start_port']
+      concurrency_string node['concurrency_string']
     end
 
     make_vhosts do
       cwd current_release_directory
-      user user
-      fqdn fqdn
+      user node['user']
+      fqdn node['fully_qualified_domain_name']
     end
   end
 
