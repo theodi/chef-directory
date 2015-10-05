@@ -12,6 +12,7 @@ default['mysql']['user'] = 'member_directory'
 default['mysql']['pool'] = 50
 
 default['migrate'] = 'bundle exec rake db:migrate'
+default['precompile_assets'] = true
 
 default['ruby-ng']['ruby_version'] = '1.9.3'
 default['ruby-ng']['dev_package'] = '1.9.1'
