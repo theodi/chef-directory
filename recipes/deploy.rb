@@ -18,15 +18,8 @@ deploy_revision "/home/#{node['user']}/#{node['fully_qualified_domain_name']}" d
       fully_qualified_domain_name node['fully_qualified_domain_name']
     end
 
-    template "/home/#{node['user']}/#{node['fully_qualified_domain_name']}/shared/config/database.yml" do
-      action :create
-      variables(
-        :mysql_host     => node['mysql']['host'],
-        :mysql_database => node['mysql']['database'],
-        :mysql_username => node['mysql']['user'],
-        :mysql_password => node['mysql']['password'],
-        :mysql_pool     => node['mysql']['pool']
-      )
+    database_yml node['user'] do
+      fully_qualified_domain_name node['fully_qualified_domain_name']
     end
 
     bundlify node['user'] do
