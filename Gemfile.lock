@@ -1,3 +1,8 @@
+PATH
+  remote: ../spatula
+  specs:
+    spatula (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -110,6 +115,7 @@ DEPENDENCIES
   berkshelf
   kitchen-vagrant
   rake
+  spatula!
   test-kitchen
 
 BUNDLED WITH
