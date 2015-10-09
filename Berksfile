@@ -2,7 +2,8 @@ source "https://supermarket.chef.io"
 
 metadata
 
-cookbook 'skellington', github: 'theodi/chef-skellington'
+#cookbook 'skellington', github: 'theodi/chef-skellington'
+cookbook 'skellington', path: '../chef-skellington'
 
 cookbook 'ruby-ng', github: '3ofcoins/chef-cookbook-ruby-ng'
 cookbook 'odi-users', github: 'theodi/chef-odi-users'
