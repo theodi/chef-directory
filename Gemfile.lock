@@ -1,7 +1,8 @@
-PATH
-  remote: ../spatula
+GIT
+  remote: git://github.com/theodi/spatula.git
+  revision: f58a17ecf5c58434bf9e065852021d414c5daa75
   specs:
-    spatula (0.1.0)
+    spatula (0.1.1)
 
 GEM
   remote: https://rubygems.org/
