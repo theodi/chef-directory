@@ -21,5 +21,7 @@ suites:
       mysql:
         host: <%= `ipconfig getifaddr en0` %>
         password: directory
+      #  username: member_directory
+      #  database: member_directory_production
       deployment:
         revision: 6fbe4f4fc057ea0ba21520e7967994156e1f7813
