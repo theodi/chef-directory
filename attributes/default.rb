@@ -9,7 +9,7 @@ default['catch_and_redirect'] = ['members.theodi.org']
 default['ruby-ng']['ruby_version'] = '1.9.3'
 
 default['mysql']['database'] = 'member_directory_production'
-default['mysql']['user'] = 'member_directory'
+default['mysql']['username'] = 'member_directory'
 default['mysql']['pool'] = 50
 
 default['migrate'] = 'bundle exec rake db:migrate'
