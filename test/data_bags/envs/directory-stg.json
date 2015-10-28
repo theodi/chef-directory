@@ -1,0 +1,17 @@
+{
+  "id": "directory-stg",
+  "content" : {
+    "rack_env": "production",
+    "rails_env": "production",
+    "session_secret": {
+      "directory": "8184842351530937c9c8c2e723fd03f4"
+    },
+    "capsulecrm" : {
+      "account_name" : "theodi",
+      "api_token" : "abcdefabcdefabcdefabcdefabcdefab"
+    },
+    "founding_partner": {
+      "id": 0
+    }
+  }
+}

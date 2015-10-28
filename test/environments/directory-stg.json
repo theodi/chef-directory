@@ -1,0 +1,17 @@
+{
+  "name": "directory-stg",
+  "description": "Staging environment",
+  "cookbook_versions": {
+
+  },
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+    "mysql": {
+      "database": "member_directory_staging"
+    }
+  }
+}

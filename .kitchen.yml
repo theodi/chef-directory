@@ -21,7 +21,17 @@ suites:
       mysql:
         host: <%= `ipconfig getifaddr en0` %>
         password: directory
-      #  username: member_directory
-      #  database: member_directory_production
+
+  - name: staging
+    provisioner:
+      client_rb:
+        environment: directory-stg
+    run_list:
+      - recipe[chef_directory::default]
+    attributes:
+      mysql:
+        host: <%= `ipconfig getifaddr en0` %>
+        password: directory
       deployment:
-        revision: 6fbe4f4fc057ea0ba21520e7967994156e1f7813
+        nginx:
+          prefix: staging
