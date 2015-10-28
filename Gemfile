@@ -5,4 +5,4 @@ gem 'test-kitchen'
 gem 'kitchen-vagrant'
 gem 'rake'
 
-gem 'spatula', github: 'theodi/spatula'
+gem 'spatula', path: '../spatula' #github: 'theodi/spatula'

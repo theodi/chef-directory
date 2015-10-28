@@ -1,8 +1,8 @@
-GIT
-  remote: git://github.com/theodi/spatula.git
-  revision: f58a17ecf5c58434bf9e065852021d414c5daa75
+PATH
+  remote: ../spatula
   specs:
-    spatula (0.1.1)
+    spatula (0.1.7)
+      mysql2 (~> 0.3)
 
 GEM
   remote: https://rubygems.org/
@@ -62,6 +62,7 @@ GEM
     mixlib-log (1.6.0)
     mixlib-shellout (2.1.0)
     multipart-post (2.0.0)
+    mysql2 (0.3.18)
     net-http-persistent (2.9.4)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
