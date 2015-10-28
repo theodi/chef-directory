@@ -31,7 +31,3 @@ suites:
     attributes:
       mysql:
         host: <%= `ipconfig getifaddr en0` %>
-        password: directory
-      deployment:
-        nginx:
-          prefix: staging

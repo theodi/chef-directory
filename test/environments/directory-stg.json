@@ -11,7 +11,13 @@
   },
   "override_attributes": {
     "mysql": {
-      "database": "member_directory_staging"
+      "database": "member_directory_staging",
+      "password": "directory"
+    },
+    "deployment": {
+      "nginx": {
+        "prefix": "staging"
+      }
     }
   }
 }
